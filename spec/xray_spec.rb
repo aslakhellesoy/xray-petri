@@ -1,19 +1,25 @@
 require_relative '../lib/clinic'
 
 describe Clinic do
+  before do
+    @clinic = Clinic.new(
+      waiting: 3
+    )
+  end
+  
+  after do |e|
+    name = e.metadata[:description_args][0].gsub(/\s+/, '_')
+    File.open("model/#{name}.txt", "w") do |io|
+      io.puts @clinic.log
+    end
+  end
+  
   it "can process one patient" do
-    # Given
-    clinic = Clinic.new
-    clinic.waiting = 3
-    clinic.xray_room = 0
+    @clinic.enter
+    @clinic.make_photo
+    @clinic.leave
 
-    # When
-    clinic.enter
-    clinic.make_photo
-    clinic.leave
-
-    # Then
-    expect(clinic.waiting).to eq(2)
-    expect(clinic.xray_room).to eq(0)
+    expect(@clinic.waiting).to eq(2)
+    expect(@clinic.xray_room).to eq(0)
   end
 end

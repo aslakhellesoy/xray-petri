@@ -2,7 +2,7 @@
 <pnml>
     <net>
         <token id="Default" red="0" green="0" blue="0"/>
-        <place id="wait">
+        <place id="waiting">
             <graphics>
                 <position x="161.0" y="248.0"/>
             </graphics>
@@ -19,7 +19,7 @@
                 <graphics>
                     <offset x="0.0" y="0.0"/>
                 </graphics>
-                <value>0</value>
+                <value>Default,0</value>
             </initialMarking>
         </place>
         <place id="before">
@@ -200,7 +200,7 @@
                 <value>Default,1</value>
             </inscription>
         </arc>
-        <arc id="wait TO enter" source="wait" target="enter">
+        <arc id="wait TO enter" source="waiting" target="enter">
             <arcpath id="" x="191.0" y="265.0" curvePoint="false"/>
             <arcpath id="" x="264.0" y="277.0" curvePoint="false"/>
             <type value="normal"/>
