@@ -3,7 +3,8 @@ require_relative '../lib/clinic'
 describe Clinic do
   before do
     @clinic = Clinic.new(
-      waiting: 3
+      waiting: 3,
+      available: 1
     )
   end
   
@@ -21,5 +22,12 @@ describe Clinic do
 
     expect(@clinic.waiting).to eq(2)
     expect(@clinic.xray_room).to eq(0)
+  end
+
+  it "does not allow 2 people to enter" do
+    @clinic.enter
+    expect do
+      @clinic.enter
+    end.to raise_error(/enter/)
   end
 end

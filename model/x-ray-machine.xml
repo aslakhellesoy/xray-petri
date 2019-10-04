@@ -19,7 +19,7 @@
                 <graphics>
                     <offset x="0.0" y="0.0"/>
                 </graphics>
-                <value>Default,0</value>
+                <value>Default,3</value>
             </initialMarking>
         </place>
         <place id="before">
@@ -40,6 +40,46 @@
                     <offset x="0.0" y="0.0"/>
                 </graphics>
                 <value></value>
+            </initialMarking>
+        </place>
+        <place id="busy">
+            <graphics>
+                <position x="493.0" y="436.0"/>
+            </graphics>
+            <name>
+                <value>P0</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value></value>
+            </initialMarking>
+        </place>
+        <place id="available">
+            <graphics>
+                <position x="432.0" y="133.0"/>
+            </graphics>
+            <name>
+                <value>P0</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,1</value>
             </initialMarking>
         </place>
         <place id="after">
@@ -184,6 +224,22 @@
                 <value>Default,1</value>
             </inscription>
         </arc>
+        <arc id="leave TO available" source="leave" target="available">
+            <arcpath id="" x="701.0" y="279.0" curvePoint="false"/>
+            <arcpath id="" x="460.0" y="155.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="enter TO busy" source="enter" target="busy">
+            <arcpath id="" x="274.0" y="277.0" curvePoint="false"/>
+            <arcpath id="" x="496.0" y="442.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
         <arc id="before TO make_photo" source="before" target="make_photo">
             <arcpath id="" x="396.0" y="288.0" curvePoint="false"/>
             <arcpath id="" x="491.0" y="283.0" curvePoint="false"/>
@@ -200,9 +256,25 @@
                 <value>Default,1</value>
             </inscription>
         </arc>
+        <arc id="available TO enter" source="available" target="enter">
+            <arcpath id="" x="435.0" y="157.0" curvePoint="false"/>
+            <arcpath id="" x="274.0" y="277.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
         <arc id="wait TO enter" source="waiting" target="enter">
             <arcpath id="" x="191.0" y="265.0" curvePoint="false"/>
             <arcpath id="" x="264.0" y="277.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="busy TO leave" source="busy" target="leave">
+            <arcpath id="" x="519.0" y="441.0" curvePoint="false"/>
+            <arcpath id="" x="701.0" y="279.0" curvePoint="false"/>
             <type value="normal"/>
             <inscription>
                 <value>Default,1</value>
